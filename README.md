@@ -6,13 +6,13 @@
 # Blackhole
 A black hole made with Rust, proceed with caution it makes disappear everything goes inside.
 
-## Language and dependencies
+## ⚒️ Language and dependencies
 - Rust 1.65.0
 - Cargo 1.65.0
 
-## Development environment
+## 💻 Development environment
 - Fedora 37
 - Codium 1.74
 
-## Runs on
+## 🚀 Runs on
 - Linux (for now only on my machine ;) jeje, it's not finished )
