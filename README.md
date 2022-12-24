@@ -4,7 +4,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ruben69695/blackhole?color=purple)
 
 # Blackhole
-A black hole made with Rust, proceed with caution it makes disappear everything goes inside.
+A black hole made with 🦀 Rust, proceed with caution it makes disappear everything goes inside.
 
 ## ⚒️ Language and dependencies
 - Rust 1.65.0
