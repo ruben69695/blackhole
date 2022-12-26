@@ -4,20 +4,25 @@ use std::time::Duration;
 const BLACKHOLE_DIR_NAME: &str = "blackhole";
 
 pub struct BlackHole {
-    pub directory: Directory,
+    pub directory: Option<Directory>,
     interval_check: f32,
 }
 
 impl BlackHole {
-    pub fn new(interval: f32) -> BlackHole {
+    pub fn new() -> BlackHole {
         return BlackHole {
-            directory: Directory::new(String::new()),
-            interval_check: interval
+            directory: None,
+            interval_check: 1.5
         };
     }
 
+    pub fn set_interval(mut self, interval: f32) -> Self {
+        self.interval_check = interval;
+        return self;
+    }
+
     pub fn from_directory(mut self, path: String) -> Self {
-        self.directory = Directory::new(path);
+        self.directory = Some(Directory::new(path));
         return self;
     }
 
@@ -32,7 +37,7 @@ impl BlackHole {
     }
 
     fn build_hole(&self) {
-        self.directory.create();
+        self.directory.as_ref().unwrap().create();
     }
 }
 
