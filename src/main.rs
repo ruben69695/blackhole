@@ -54,13 +54,17 @@ fn print_help() {
     println!("Blackhole CLI program
 
     USAGE:
+        blackhole --help
+        blackhole --version
         blackhole <base_path> <interval>
         
     EXAMPLE:
         blackhole /home/user/Dowloads
         blackhole /home/user/Downloads 1.5
         
-    ARGS:
+    OPTIONS:
+        --help, -h      print this message
+        --version, -v   print current version
         <base_path>     the path where to create the blackhole
         <interval>      [optional] indicates the time in seconds it takes for the black hole to absorb"
     );
