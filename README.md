@@ -11,8 +11,9 @@ A black hole made with 🦀 Rust, proceed with caution it makes disappear everyt
 - Cargo 1.65.0
 
 ## 💻 Development environment
-- Fedora 37
+- Fedora 37 and MacOS Monterey
 - Codium 1.74
 
 ## 🚀 Runs on
-- Linux (for now only on my machine ;) jeje, it's not finished )
+- Linux
+- MacOS
