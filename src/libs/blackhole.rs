@@ -1,4 +1,4 @@
-use std::fs::{ReadDir};
+use std::fs::ReadDir;
 use std::{path::Path, fs, thread};
 use std::time::Duration;
 
@@ -76,8 +76,8 @@ impl Directory {
         let path: &Path = Path::new(&full_path);
 
         match fs::create_dir_all(path) {
-            Ok(_) => println!("Directory {} created", full_path),
-            Err(e) => println!("Error creating directory: {}", e),
+            Ok(_) => println!("Directory created on {}", full_path),
+            Err(e) => println!("Error creating directory on {}, with the next error {}", full_path, e),
         }
     }
 
