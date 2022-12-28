@@ -16,4 +16,5 @@ A black hole made with 🦀 Rust, proceed with caution it makes disappear everyt
 
 ## 🚀 Runs on
 - Linux
-- MacOS
+- MacOS (Apple Silicon and Intel)
+- Windows
