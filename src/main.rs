@@ -65,7 +65,7 @@ fn print_help() {
     OPTIONS:
         --help, -h      print this message
         --version, -v   print current version
-        <base_path>     the path where to create the blackhole
-        <interval>      [optional] indicates the time in seconds it takes for the black hole to absorb"
+        <base_path>     absolute path where to create the blackhole
+        <interval>      [optional] indicates the time in seconds it takes for the black hole to absorb data"
     );
 }
