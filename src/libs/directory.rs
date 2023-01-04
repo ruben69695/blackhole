@@ -8,10 +8,10 @@ pub struct Directory {
 
 impl Directory {
     
-    pub fn new(base_path: String, dir_name: &str) -> Directory {
+    pub fn new(base_path: String, dir_name: String) -> Directory {
         return Directory { 
             path: base_path, 
-            name: String::from(dir_name),
+            name: dir_name,
         };
     }
 
@@ -24,8 +24,8 @@ impl Directory {
         let path: &Path = Path::new(&full_path);
 
         match fs::create_dir_all(path) {
-            Ok(_) => println!("Directory created on {}", full_path),
-            Err(e) => println!("Error creating directory on {}, with the next error {}", full_path, e),
+            Ok(_) => println!("> Directory created on {}", full_path),
+            Err(e) => println!("> Error creating directory on {}, with the next error {}", full_path, e),
         }
     }
 
@@ -63,13 +63,13 @@ impl Directory {
             if metadata.is_dir() {
                 self.delete_dir_content_for_path(path_str);
                 match fs::remove_dir(path) {
-                    Ok(()) => println!("Directory removed"),
-                    Err(e) => println!("Error removing dir, e => {}", e)
+                    Ok(_) => continue,
+                    Err(e) => println!("> Error removing dir, e => {}", e)
                 };
             }
             else {
                 match fs::remove_file(path.as_path()) {
-                    Ok(()) => continue,
+                    Ok(_) => continue,
                     Err(_) => continue,
                 }
             }

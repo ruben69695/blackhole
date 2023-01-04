@@ -1,6 +1,7 @@
 mod libs;
 
 use crate::libs::blackhole::BlackHole;
+use crate::libs::utils;
 use exitcode::{self, ExitCode};
 use std::env;
 
@@ -24,6 +25,14 @@ fn main() {
         exit(exitcode::OK, false);
     }
 
+    if first_arg == "--eat" || first_arg == "-e" {
+        let file_paths = clone_args(&args[2..]);
+        BlackHole::new()
+            .set_files(file_paths)
+            .eat_files();
+        exit(exitcode::OK, false);
+    }
+
     let base_path: String = first_arg.to_string();
 
     if args_length > 2 {
@@ -33,39 +42,27 @@ fn main() {
         };
     }
 
-    println!("This is a black hole, proceed with caution!");
+    println!("> This is a black hole, proceed with caution!");
 
     let bh: BlackHole = BlackHole::new()
         .from_directory(base_path)
         .set_interval(interval);
 
-    bh.start();
+    bh.start_hole();
 }
 
 fn exit(code: ExitCode, show_help: bool) {
     if show_help {
-        print_help();
+        utils::cli::print_help();
     }
 
     std::process::exit(code);
 }
 
-fn print_help() {
-    println!("Blackhole CLI program
-
-    USAGE:
-        blackhole --help
-        blackhole --version
-        blackhole <base_path> <interval>
-        
-    EXAMPLE:
-        blackhole /home/user/Dowloads
-        blackhole /home/user/Downloads 1.5
-        
-    OPTIONS:
-        --help, -h      print this message
-        --version, -v   print current version
-        <base_path>     absolute path where to create the blackhole
-        <interval>      [optional] indicates the time in seconds it takes for the black hole to absorb data"
-    );
+fn clone_args(args: &[String]) -> Vec<String> {
+    let mut file_paths: Vec<String> = Vec::new();
+    for param in args {
+        file_paths.push(param.clone());
+    }
+    return file_paths;
 }
