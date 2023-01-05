@@ -1,3 +1,20 @@
+# Elevate to super user extracted from here: https://superuser.com/a/532109s
+param([switch]$Elevated)
+
+function Test-Admin {
+    $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
+    $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+}
+
+if ((Test-Admin) -eq $false)  {
+    if ($elevated) {
+        # tried to elevate, did not work, aborting
+    } else {
+        Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
+    }
+    exit
+}
+
 $base_url = "https://github.com/ruben69695/blackhole/releases/download"
 $version = "v1.1.0"
 $file = "x86_64-pc-windows-gnu"
@@ -19,11 +36,14 @@ Invoke-WebRequest -Uri $resource_url -OutFile $file$extension
 Expand-Archive -Path $file$extension -DestinationPath $file
 
 Write-Host "  > ⏳ Installing..."
-Move-Item '$file\release\blackhole' C:\Windows\System32
+if (Test-Path C:\Windows\System32\blackhole.exe) {
+    Remove-Item C:\Windows\System32\blackhole.exe
+}
+Move-Item "$file\$file\release\blackhole.exe" C:\Windows\System32
 
 Write-Host "  > 🧹 Cleaning the house..."
-Remove-Item C:\blackhole_temp -Recurse
 Set-Location $from_dir
+Remove-Item C:\blackhole_temp -Recurse
 
 Write-Host "  > 🍺 Installed!"
 Write-Host "  > ⚠️  Reopen your terminal before use the blackhole CLI"
