@@ -62,6 +62,7 @@ A black hole made with 🦀 Rust, proceed with caution it makes disappear everyt
 
 ## 💻 Development environment
 - Fedora 37 and MacOS Monterey
+- Lapce 0.2.5
 - Codium 1.74
 
 ## 🚀 Runs on
