@@ -6,10 +6,69 @@
 # Blackhole
 A black hole made with 🦀 Rust, proceed with caution it makes disappear everything goes inside or you pass to it.
 
-## 📦 Language and dependencies
+## 📦 Languages and Dev-Tools
 - Rust 1.65.0
 - Cargo 1.65.0
-- exitcode 1.1.2
+
+## 🔨 Install debug
+This installation version is only for development purposes, be sure to have principal language and dev-tools installed: Rust and Cargo 
+with the minimal version specified.
+
+1. Clone the respository
+    ```zsh
+    git clone https://github.com/ruben69695/blackhole.git
+    ```
+
+2. Build the project usign cargo cli tool
+    ```zsh
+    cargo build
+    ```
+
+3. Run the project
+    ```zsh
+    cargo run -- --version
+    ```
+    
+## 🚀 Install release
+This installation version is for production use, be sure to have installed the dependencies for each 
+platform to be able to install the CLI tool.
+
+### 🐧 Linux -  MacOS
+#### Dependencies
+To be able to use the installation script `ìnstall.sh`, is required to have installed the next dependencies:
+- bash
+- curl
+- unzip
+
+#### Installation
+Execute the script `ìnstall.sh`, root is not necessary
+
+1. Give execute permission
+    ```zsh
+    chmod u+x install.sh
+    ```
+
+2. Execute the installer
+    ```zsh
+    ./install.sh
+    ```
+    > If it's the first time installing the tool, re-open a new terminal to be able to use it
+    
+### 🪟 Windows
+#### Dependencies
+To be able to use the installation script `ìnstall.ps1`, is required to have installed the next dependencies:
+- powershell
+
+#### Installation
+Execute the script `ìnstall.ps1` in Windows, admin is required to make the installation, if is not executed as admin it 
+will be elevated to do it automatically.
+
+1. Execute the installer
+    ```zsh
+    .\install.ps1
+    ```
+    > If it's the first time installing the tool, re-open a new terminal to be able to use it
+   
 
 ## ✏️ Getting started
 
